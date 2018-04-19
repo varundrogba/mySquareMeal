@@ -1,4 +1,5 @@
 var place;
+var address = '';
 
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -49,7 +50,6 @@ function initMap() {
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
 
-    var address = '';
     if (place.address_components) {
       address = [
         (place.address_components[0] && place.address_components[0].short_name || ''),
@@ -66,5 +66,5 @@ function initMap() {
 }
 
 function locbtn() {
-  alert(place.geometry.location);
+  alert(place.geometry.location + place.address_components[0].short_name);
 }
