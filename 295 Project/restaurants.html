@@ -17,7 +17,10 @@
 	<link href="themes/css/main.css" rel="stylesheet" />
 
 	<!-- scripts -->
-	<script src="themes/js/jquery-1.7.2.min.js"></script>
+	<script
+			src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="themes/js/superfish.js"></script>
 	<script src="themes/js/jquery.scrolltotop.js"></script>
@@ -25,6 +28,32 @@
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<script>
+
+        $(function() {
+
+            var div = $('#r_details');
+            var ul = $('#r_list');
+            var r_data = [];
+
+            $.getJSON("http://localhost:63342/295%20Project/api/response.json?", function(data) {
+                $.each(data, function(i, f) {
+                    r_data.push([f.restaurant_name, f.address.street_address, f.address.city, f.address.zip, f.menu_data]);
+                    ul.append('<li class="span3"><div class="product-box"><span class="sale_tag"></span><br/><a href="#' + i + '">' + f.restaurant_name + '</a><br/></div>')
+                });
+                $('a').on('click', addContent);
+            });
+
+            function addContent(e) {
+                e.preventDefault();
+                var hash = this.hash.replace('#','');
+                div.html('');
+                div.append('<p><b>Name:</b> ' + r_data[hash][0] + '</p>');
+                div.append('<p><b>Address:</b> ' + r_data[hash][1] + ", " + r_data[hash][2] + ", " + r_data[hash][3] + '</p>');
+            }
+        });
+
+	</script>
 </head>
 
 <body>
@@ -50,68 +79,15 @@
 
 			<div class="row">
 			<div class="span12">
-				<ul class="thumbnails listing-products">
-					<li class="span3">
-						<div class="product-box">
-							<span class="sale_tag"></span>
-							<a href="product_detail.html" class="title">Restaurant Name</a><br/>
-						</div>
-					</li>
-					<li class="span3">
-						<div class="product-box">
-							<a href="product_detail.html" class="title">Restaurant Name</a><br/>
-						</div>
-					</li>
-					<li class="span3">
-						<div class="product-box">
-							<span class="sale_tag"></span>
-							<a href="product_detail.html" class="title">Restaurant Name</a><br/>
-							 
-						</div>
-					</li>
-					<li class="span3">
-						<div class="product-box">
-							<span class="sale_tag"></span>
-							<a href="product_detail.html" class="title">Restaurant Name</a><br/>
-							 
-						</div>
-					</li>
-					<li class="span3">
-						<div class="product-box">
-							<a href="product_detail.html" class="title">Restaurant Name</a><br/>
-							 
-						</div>
-					</li>
-					<li class="span3">
-						<div class="product-box">
-							<a href="product_detail.html" class="title">Restaurant Name</a><br/>
-							 
-						</div>
-					</li>
-					<li class="span3">
-						<div class="product-box">
-							<a href="product_detail.html" class="title">Restaurant Name</a><br/>
-							 
-						</div>
-					</li>
-					<li class="span3">
-						<div class="product-box">
-							<a href="product_detail.html" class="title">Restaurant Name</a><br/>
-							 
-						</div>
-					</li>
+				<ul class="thumbnails listing-products" id = "r_list" data-role="listview">
+					<!--<li class="span3">-->
+						<!--<div class="product-box">-->
+							<!--<span class="sale_tag"></span>-->
+							<!--<a href="product_detail.html" class="title"><div id = "r_name"></div></a><br/>-->
+						<!--</div>-->
+					<!--</li>-->
 				</ul>
-				<hr>
-				<div class="pagination pagination-small pagination-centered">
-					<ul>
-						<li><a href="#">Prev</a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">Next</a></li>
-					</ul>
-				</div>
+                <div id = r_details class = "text-center"></div>
 			</div>
 		</div>
 	</section>
