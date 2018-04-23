@@ -39,9 +39,9 @@
             $.getJSON("http://localhost:63342/295%20Project/api/response.json?", function(data) {
                 $.each(data, function(i, f) {
                     r_data.push([f.restaurant_name, f.address.street_address, f.address.city, f.address.zip, f.menu_data]);
-                    ul.append('<li class="span3"><div class="product-box"><span class="sale_tag"></span><br/><a href="#' + i + '">' + f.restaurant_name + '</a><br/></div>')
+                    ul.append('<li class="span3"><div class="product-box"><span class="sale_tag"></span><br/><a class = "r_anchor" href="#' + i + '">' + f.restaurant_name + '</a><br/></div>')
                 });
-                $('a').on('click', addContent);
+                $('.r_anchor').on('click', addContent);
             });
 
             function addContent(e) {
