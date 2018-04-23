@@ -45,11 +45,20 @@
             });
 
             function addContent(e) {
+                $("#r_details").html("");
                 e.preventDefault();
                 var hash = this.hash.replace('#','');
                 div.html('');
                 div.append('<p><b>Name:</b> ' + r_data[hash][0] + '</p>');
                 div.append('<p><b>Address:</b> ' + r_data[hash][1] + ", " + r_data[hash][2] + ", " + r_data[hash][3] + '</p>');
+                div.append('<p><b>Menu:</b> ' + '</p>');
+                for (i = 0 ; i < r_data[hash][4].length ; i++) {
+                    div.append('<p>'
+                        +
+                        r_data[hash][4][i]
+                        +
+                        '</p>');
+                }
             }
         });
 
@@ -87,7 +96,7 @@
 						<!--</div>-->
 					<!--</li>-->
 				</ul>
-                <div id = r_details class = "text-center"></div>
+				<div id = r_details class = "text-center"></div>
 			</div>
 		</div>
 	</section>

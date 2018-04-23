@@ -1,10 +1,10 @@
 [{
   "restaurant_name": "Jora Catering",
   "address": {
-    "longitude": -121.883693,
+    "longitude": "-121.883693",
     "city": "San Jose",
     "zip": "95112",
-    "latitude": 37.328255,
+    "latitude": "37.328255",
     "state": "CA",
     "street_address": "545 S Second St"
   },
