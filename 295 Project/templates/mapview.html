@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-cookies.js"></script>
+<script src="../static/mapview.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3obr5y8IoLq5Zpr1-xoxnDjnl8sPmohw"></script>
+
+
+
+<head>
+    <meta charset="utf-8">
+    <title>mySquareMeal - Map View</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="../static/css/bootstrappage.css" rel="stylesheet" />
+
+    <!-- global styles -->
+    <link href="../static/css/flexslider.css" rel="stylesheet" />
+    <link href="../static/css/main.css" rel="stylesheet" />
+
+    <!-- scripts -->
+    <script src="../static/js/jquery-1.7.2.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/js/superfish.js"></script>
+    <script src="../static/js/jquery.scrolltotop.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-app="map_app" ng-controller="map_app_controller">
+<div id="top-bar" class="container">
+    <div class="row"></div>
+    <div class="span11">
+        <div class="account pull-left ">
+            <img src="../static/images/logo.png" width=50% height=50% alt="logo"> </img>
+        </div>
+        <div class="account pull-right">
+            <ul class="user-menu">
+                <li><a href="{{url_for('home_redirect')}}">Home</a></li>
+                <li><a href="{{url_for('profile_redirect')}}">Profile</a></li>
+                <li><a href="{{url_for('restaurants_redirect')}}">Switch to List View</a></li>
+                <li><a href="{{url_for('logout_redirect')}}">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="wrapper" class="container">
+
+    <section class="main-content">
+
+        <div class="row">
+            <div class="span12">
+                <br>
+                <div id="map" style="width: 100%; height: 400px;">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="copyright">
+        <span>copyright Mandar Gade, Neha Kumar, Varun Shah, Setu Pandya, San Jose State University</span>
+    </section>
+</div>
+<script src="../static/js/common.js"></script>
+</body>
+</html>

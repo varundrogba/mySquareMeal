@@ -1,0 +1,101 @@
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-cookies.js"></script>
+<script src="../static/registration.js"></script>
+<head>
+	<meta charset="utf-8">
+	<title>mySquareMeal - Register</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+	<!-- bootstrap -->
+	<link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="../static/css/bootstrappage.css" rel="stylesheet" />
+
+	<!-- global styles -->
+	<link href="../static/css/flexslider.css" rel="stylesheet" />
+	<link href="../static/css/main.css" rel="stylesheet" />
+
+	<!-- scripts -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../static/js/superfish.js"></script>
+	<script src="../static/js/jquery.scrolltotop.js"></script>
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<title>mySquareMeal - Registration</title>
+</head>
+
+<body ng-app="registration_app" ng-controller="registration_controller">
+
+<div id="top-bar" class="container">
+	<div class="row"></div>
+	<div class="span11">
+		<div class="account pull-left ">
+			<img src="../static/images/logo.png" width= 50% height= 50% alt="logo"> </img>
+		</div>
+		<div class="account pull-right">
+			<ul class="user-menu">
+				<li><a href="{{url_for('index')}}">Welcome</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="wrapper" class="container">
+
+	<section class="main-content">
+
+		<div class="row">
+			<div  class="span12">
+				<h1 class="text-center">mySquareMeal</h1>
+				<div class = "text-center">
+					<form id="register-form-id" name="registration_form" novalidate class="ng-invalid">
+						<br>
+						<div class = "justify-content-between">
+							<div class="form-group">
+								<label for="reg_email"><b>Email address<sup>*</sup></b></label>
+								<input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="Email" ng-required="true" ng-pattern="email_add" autocomplete="off" ng-model="email">
+								<span style="color: red" ng-show="registration_form.reg_email.$error.pattern"><br>Invalid Email</br></span>
+								<span style="color: red" ng-if="registration_form.reg_email.$error.required && registration_form.reg_email.$dirty"><br>Email is required</br></span>
+							</div>
+							<div class="form-group">
+								<label for="reg_password"><b>Password<sup>*</sup></b></label>
+								<input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password" ng-model="password" ng-required="true">
+								<span style="color: red" ng-if="registration_form.reg_password.$error.required && registration_form.reg_password.$dirty"><br>Password is required</br></span>
+							</div>
+							<div class="form-group">
+								<label for="reg_password_confirm"><b>Confirm Password<sup>*</sup></b></label>
+								<input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password" ng-model="confirm_password" ng-required="true" ng-change="match_password()">
+								<span style="color: red" ng-if="registration_form.reg_password_confirm.$error.required && registration_form.reg_password_confirm.$dirty"><br>Confirm your password</br></span>
+								<span style="color: red" ng-show="!registration_form.reg_password_confirm.$error.required && registration_form.reg_password_confirm.$dirty && registration_form.reg_password_confirm.$error.match_error"><br>Passwords dont match</br></span>
+							</div>
+							<div class="form-group">
+								<label for="reg_foodprefs"><b>List food allergies<sup>*</sup>(separate by Comma)</b></label>
+								<input type="text" class="form-control" id="reg_foodprefs" name="reg_foodprefs" placeholder="food preferences" ng-model="allergies" ng-pattern="input_list" ng-required="true" ng-change="check_input_list()">
+								<span style="color: red" ng-if="registration_form.reg_foodprefs.$error.required && registration_form.reg_foodprefs.$dirty"><br>Food allergy information is required</br></span>
+								<span style="color:red" ng-show="registration_form.reg_foodprefs.$error.pattern"><br>Use letters and comma</br></span>
+							</div>
+						</div>
+						<br>
+						<button type="submit" id="submit" name="submit" class="btn btn-round-lg" ng-disabled="registration_form.$invalid" ng-click="register_new_user(email, password, allergies)">Register</button>
+						<div>
+							<p>Already have an account? <a href="{{url_for('login_redirect')}}">login here</a></p>
+						</div>
+					</form>
+				</div>
+				<!-- end:Main Form -->
+			</div>
+		</div>
+	</section>
+	<section id="copyright">
+		<span>copyright Mandar Gade, Neha Kumar, Varun Shah, Setu Pandya, San Jose State University</span>
+	</section>
+</div>
+<script src="../static/js/common.js"></script>
+
+</body>
+
+</html>

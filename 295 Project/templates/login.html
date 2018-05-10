@@ -1,0 +1,89 @@
+<html lang="en" ng-app="login_app" ng-controller="login_controller">
+
+<head>
+	<meta charset="utf-8">
+	<title>mySquareMeal - Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+	<!-- bootstrap -->
+	<link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="../static/css/bootstrappage.css" rel="stylesheet" />
+
+	<!-- global styles -->
+	<link href="../static/css/flexslider.css" rel="stylesheet" />
+	<link href="../static/css/main.css" rel="stylesheet" />
+
+	<!-- scripts -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../static/js/superfish.js"></script>
+	<script src="../static/js/jquery.scrolltotop.js"></script>
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<title>mySquareMeal - Login</title>
+</head>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-cookies.js"></script>
+<body>
+
+<div id="top-bar" class="container">
+	<div class="row"></div>
+	<div class="span11">
+		<div class="account pull-left ">
+			<img src="../static/images/logo.png" width= 50% height= 50% alt="logo"> </img>
+		</div>
+		<div class="account pull-right">
+			<ul class="user-menu">
+				<li><a href="{{url_for('index')}}">Welcome</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="wrapper" class="container">
+
+	<section class="main-content">
+
+		<div class="row">
+			<div  class="span12">
+				<h1 class="text-center">mySquareMeal</h1>
+				<div class = "text-center">
+					<form id="login-form">
+						<div></div>
+						<div>
+							<div>
+								<div class="form-group">
+									<label for="lg_email" class="sr-only">Email</label>
+									<input type="text" class="form-control" id="lg_email" name="lg_email" placeholder="email" ng-model="email">
+								</div>
+								<div class="form-group">
+									<label for="lg_password" class="sr-only">Password</label>
+									<input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="password" ng-model="password">
+								</div>
+							</div>
+							<button type="submit" class="btn-round-lg" ng-click="verification(email, password)"> Log in </button>
+						</div>
+						<div>
+							<p>Forgot your password? <a href="forgotpassword.html">Click here</a></p>
+							<p>New user? <a href="{{url_for('registration_redirect')}}">Create New Account</a></p>
+						</div>
+					</form>
+				</div>
+				<!-- end:Main Form -->
+			</div>
+		</div>
+	</section>
+	<section id="copyright">
+		<span>copyright Mandar Gade, Neha Kumar, Varun Shah, Setu Pandya, San Jose State University</span>
+	</section>
+</div>
+<script src="../static/js/common.js"></script>
+<script src="../static/login.js"></script>
+</body>
+
+</html>

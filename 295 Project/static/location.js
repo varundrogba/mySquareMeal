@@ -66,5 +66,26 @@ function initMap() {
 }
 
 function locbtn() {
-  alert(place.geometry.location + place.address_components[0].short_name);
+  //alert(place.address_components[0]);
+    var latitude = place.geometry.location.lat();
+    var longitude = place.geometry.location.lng();
+    //console.log(latitude)
+    angular.element(document.getElementById('loc-btn')).scope().request_recommendations(latitude,longitude);
+
 }
+
+
+angular.module('home_app', ['ngCookies'])
+    .controller('home_app_controller',[ '$scope', '$http','$cookies',function ($scope, $http, $cookies) {
+        $scope.request_recommendations = function (latitude, longitude) {
+            console.log('location controller');
+            console.log(latitude);
+            console.log(longitude);
+            $cookies.remove('latitude')
+            $cookies.remove('longitude')
+            $cookies.put('latitude',latitude)
+            $cookies.put('longitude',longitude)
+            console.log($cookies.get('email'));
+            window.location.href = '/restaurants';
+        };
+    }]);

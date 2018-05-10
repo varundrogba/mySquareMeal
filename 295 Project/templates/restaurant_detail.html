@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-cookies.js"></script>
+<head>
+	<meta charset="utf-8">
+	<title>mySquareMeal - Restaurant Menu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+	<!-- bootstrap -->
+	<link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="../static/css/bootstrappage.css" rel="stylesheet" />
+
+	<!-- global styles -->
+	<link href="../static/css/flexslider.css" rel="stylesheet" />
+	<link href="../static/css/main.css" rel="stylesheet" />
+
+	<!-- scripts -->
+	<script
+			src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
+	<script src="../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../static/js/superfish.js"></script>
+	<script src="../static/js/jquery.scrolltotop.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js	"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<!--
+	<script>
+        $(function() {
+
+            var div = $('#r_details');
+            var r_data = [];
+            var i;
+
+            $.getJSON("../api/response.json?", function(data) {
+                $.each(data, function(i, f) {
+                    if(f.restaurant_name.toString() === Cookies.get().restaurant_name)
+                    {
+                        r_data.push([f.restaurant_name, f.address.street_address, f.address.city, f.address.zip, f.menu_data])
+                        $("#rname").append("MENU - " + r_data[0][0]);
+                        $("#raddress").append('<p><b></b> ' + r_data[0][1] + ", " + r_data[0][2] + ", " + r_data[0][3] + '</p>');
+                        $("#rmenu").append('<p><b></b> ' + '</p>');
+                        for (i = 0 ; i < r_data[0][4].length ; i++) {
+                            // $("#rmenu").append('<p>'
+                            //     +
+                            //     r_data[0][4][i]
+                            //     +
+                            //     '</p>');
+                            $("#rmenulist").append('<li class="span3">' +
+                                '<div class="product-box">' +
+                                '<span class="sale_tag"></span><br/>' +
+                                r_data[0][4][i]
+                                + '<br/></div>');
+                        };
+                    }
+                    //ul.append('<li class="span3"><div class="product-box"><span class="sale_tag"></span><br/><a class="rest_details" href="#' + i + '">' + f.restaurant_name + '</a><br/></div>')
+                });
+            });
+        });
+	</script>
+	-->
+</head>
+
+<body ng-app="restaurants_details_app" ng-controller="restaurants_details_app_controller">
+<div id="top-bar" class="container">
+	<div class="row">
+		<div class="span8">
+			<div class="account pull-right">
+				<ul class="user-menu">
+					<li><a href="{{url_for('home_redirect')}}">Home</a></li>
+					<li><a href="{{url_for('restaurants_redirect')}}">Restaurants</a></li>
+					<li><a href="{{url_for('logout_redirect')}}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="wrapper" class="container">
+
+	<section class="header_text sub">
+		<img class="pageBanner" src="../static/images/pageBanner.png" alt="New products">
+		<h4><span><div id = "rname"></div></span></h4>
+		<div id = "raddress" class = text-center></div>
+	</section>
+	<section class="main-content">
+		<div class="row">
+			<div class="span12">
+				<div id = "r_details"></div>
+				<div class="row">
+					<div class="span4">
+						<!--<a href="../static/images/ladies/1.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="themes/images/ladies/1.jpg"></a>-->
+						<!--<ul class="thumbnails small">-->
+						<!--<li class="span1">-->
+						<!--<a href="../static/images/ladies/2.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="themes/images/ladies/2.jpg" alt=""></a>-->
+						<!--</li>-->
+						<!--</ul>-->
+					</div>
+					<div class="span12">
+						<address>
+							<div id = "rmenu" class = text-center></div>
+							<ul class="thumbnails listing-products" id = "rmenulist" data-role="listview"></ul>
+						</address>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="copyright">
+		<span>copyright Mandar Gade, Neha Kumar, Varun Shah, Setu Pandya, San Jose State University</span>
+	</section>
+</div>
+<script src="../static/js/common.js"></script>
+<script src="../static/restaurant_details.js"></script>
+</body>
+
+</html>
